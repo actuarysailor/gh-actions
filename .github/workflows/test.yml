@@ -37,5 +37,6 @@ jobs:
         run: |
           ./scripts/update-readme.sh
           if [ $(git status --porcelain | grep -c 'M README.md') -eq 1 ]; then
+            git diff --compact-summary
             exit 1
           fi

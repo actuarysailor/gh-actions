@@ -47,6 +47,8 @@ jobs:
         run: |
           ./scripts/update-readme.sh
           if [ $(git status --porcelain | grep -c 'M README.md') -eq 1 ]; then
+            git config user.email "noreply.${{ github.actor }}@github.com"
+            git config user.name "${{ github.actor }}"
             git commit -m "docs: README.md Updated"
             git push
           fi

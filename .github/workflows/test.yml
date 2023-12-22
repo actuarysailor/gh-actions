@@ -34,9 +34,18 @@ jobs:
           sudo chmod 755 /usr/local/bin/gomplate
 
       - name: Check README content based on action.yml
+        if: ${{ github.repository_owner == 'terraform-docs' }}
         run: |
           ./scripts/update-readme.sh
           if [ $(git status --porcelain | grep -c 'M README.md') -eq 1 ]; then
             git diff
             exit 1
+          fi
+
+      - name: Check README content based on action.yml
+        if: ${{ github.repository_owner != 'terraform-docs' }}
+        run: |
+          ./scripts/update-readme.sh
+          if [ $(git status --porcelain | grep -c 'M README.md') -eq 1 ]; then
+            git push
           fi

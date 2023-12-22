@@ -5,6 +5,10 @@ on:
   push:
     branches:
       - main
+    paths:
+      - Dockerfile
+      - action.yml
+      - src/docker-entrypoint.sh
 
 env:
   REGISTRY_USERNAME: ${{ secrets.REGISTRY_USERNAME }}

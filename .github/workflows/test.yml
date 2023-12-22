@@ -50,6 +50,6 @@ jobs:
             git config user.email "noreply.${{ github.actor }}@github.com"
             git config user.name "${{ github.actor }}"
             git add README.md
-            git commit -m "docs: README.md Updated"
+            git commit -s -m "docs: README.md Updated"
             git push
           fi

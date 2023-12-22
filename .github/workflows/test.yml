@@ -47,5 +47,6 @@ jobs:
         run: |
           ./scripts/update-readme.sh
           if [ $(git status --porcelain | grep -c 'M README.md') -eq 1 ]; then
+            git commit -m "docs: README.md Updated"
             git push
           fi
